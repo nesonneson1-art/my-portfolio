@@ -199,6 +199,12 @@
         <h1>{{ profile.portfolio_title }}</h1>
         
         <p>{{ profile.sub_title }}</p>
+
+        {% if profile.resume %}
+    <a href="{{ profile.resume.url }}" class="btn btn-primary" download>
+        Download Resume
+    </a>
+{% endif %}
         
         <div class="social-links">
             </div>

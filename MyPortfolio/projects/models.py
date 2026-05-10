@@ -41,6 +41,6 @@ class Profile(models.Model):
     about_me = models.TextField(blank=True, help_text="உங்களைப் பற்றி இங்கே எழுதவும்")
     portfolio_title = models.CharField(max_length=200, default="My Project Portfolio")
     sub_title = models.CharField(max_length=200, default="Java Developer | Django Enthusiast")
-    
+    resume = models.FileField(upload_to='resumes/', blank=True, null=True) # இந்த வரியைச் சேர்க்கவும்
     def __str__(self):
         return self.name
