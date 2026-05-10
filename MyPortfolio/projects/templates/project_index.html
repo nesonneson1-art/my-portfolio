@@ -1,0 +1,278 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neson | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        h1 { margin: 0; font-size: 2.5rem; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        /* CSS Grid setup */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover { transform: translateY(-10px); }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-content { padding: 20px; }
+        .tech-stack {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #039be5;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .github-btn {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            background: #2c3e50;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Neson's Project Portfolio</h1>
+    <p>Java Developer | Django Enthusiast</p>
+</header>
+<header>
+
+    <h1>Neson's Project Portfolio</h1>
+    <p>Java Developer | Django Enthusiast</p>
+    <a href="/media/resume.pdf" class="github-btn" style="background: #e74c3c;" download>Download My Resume</a>
+</header> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neson | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    {% load static %} <style>
+        /* முந்தைய CSS-க்கு கீழே இதைச் சேர்க்கவும் */
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        /* புராஜெக்ட் கார்டு போட்டோவை மட்டும் சரிசெய்ய */
+        .project-card img {
+            width: 100%;
+            height: 250px;       /* உயரத்தை 250px-ஆ குறைச்சிருக்கேன் */
+            object-fit: cover;    /* படம் இழுக்கப்படாம கச்சிதமா கார்டுக்குள்ள உட்காரும் */
+            border-radius: 8px 8px 0 0; /* மேல மட்டும் வளைவா இருக்கும் */
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;    /* இமேஜ் கார்டை விட்டு வெளிய வராம பாத்துக்கோங்க */
+            max-width: 400px;    /* ஒரு கார்டு இவ்வளவு தான் அகலம் இருக்கணும்னு கட்டுப்படுத்துறோம் */
+            margin: 20px auto;   /* சென்டரா வரதுக்கு */
+        }             
+        
+        .project-content {
+            padding: 20px;       /* இதுதான் அந்த ஓரத்துல இருக்குற நெருக்கத்தைச் சரி பண்ணும் */
+            text-align: left;    /* டெக்ஸ்ட் இடது பக்கம் சீரா இருக்க */
+        }
+
+        .project-content h2 {
+            margin: 0 0 10px 0;  /* டைட்டிலுக்கு கீழ மட்டும் கொஞ்சம் கேப் */
+            font-size: 1.5rem;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;    /* வரிகளுக்கு இடையே கேப் குடுக்க */
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-btn {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-grid {
+    display: grid;
+    /* ஒரு வரிசைக்கு சரியாக 4 கார்டுகள் வர இது உதவும் */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;          /* கார்டுகளுக்கு இடையே உள்ள இடைவெளி */
+    padding: 40px 20px;
+    max-width: 1200px;  /* கன்டென்ட் ரொம்ப விரிந்து போகாமல் தடுக்க */
+    margin: 0 auto;     /* கிரிட்டை பக்கத்தின் நடுவில் வைக்க */
+}
+
+/* மொபைல் போனில் பார்க்கும்போது கார்டுகள் உடையாமல் இருக்க இந்த சின்ன கோடு தேவை */
+@media (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr); /* டேப்லெட்டில் 2 கார்டுகள் */
+    }
+}
+
+@media (max-width: 600px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* மொபைலில் ஒரு கார்டு */
+    }
+}
+        .social-btn:hover {
+            background: white;
+            color: #2c3e50;
+            transform: scale(1.1);
+        }
+        
+        /* பழைய CSS... */
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; color: #333; }
+        header { background: #2c3e50; color: white; padding: 80px 20px; text-align: center; }
+        /* ...etc */
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        {% if profile.profile_pic %}
+            <img src="{{ profile.profile_pic.url }}" alt="{{ profile.name }}" class="profile-img">
+        {% endif %}
+        
+        <h1>{{ profile.portfolio_title }}</h1>
+        
+        <p>{{ profile.sub_title }}</p>
+        
+        <div class="social-links">
+            </div>
+    </div>
+</header>
+<div class="container">
+    <div class="project-grid">
+        {% for project in projects %}
+        <div class="project-card">
+            {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+            {% endif %}
+            <div class="project-content">
+                <span class="tech-stack">{{ project.technology }}</span>
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
+                {% if project.github_link %}
+                    <a href="{{ project.github_link }}" class="github-btn" target="_blank">View GitHub</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<section id="contact" style="padding: 60px 20px; background: #fff; text-align: center;">
+    <h2>Get In Touch</h2>
+    <p>உங்களுக்கு ஏதேனும் சந்தேகங்கள் இருந்தால் அல்லது என்னுடன் இணைந்து பணியாற்ற விரும்பினால் மெசேஜ் அனுப்புங்கள்!</p>
+    
+    <div style="max-width: 600px; margin: 0 auto; text-align: left;">
+        <form method="POST">
+            {% csrf_token %}
+            <div style="margin-bottom: 15px;">
+                <label>Name</label>
+                <input type="text" name="name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label>Email</label>
+                <input type="email" name="email" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label>Message</label>
+                <textarea name="message" rows="5" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+            </div>
+            <button type="submit" style="background: #2c3e50; color: white; padding: 10px 25px; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+        </form>
+    </div>
+</section>
+<footer style="text-align: center; padding: 50px 20px; background: #2c3e50; color: white; margin-top: 50px;">
+    <div class="footer-content" style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+        
+        <div>
+            <h3 style="color: #deff9a; margin-bottom: 15px;">Contact Me</h3>
+            <p style="margin: 5px 0;"><i class="fas fa-envelope"></i> {{ profile.email }}</p>
+            <p style="margin: 5px 0;"><i class="fas fa-phone"></i> {{ profile.phone }}</p>
+            <p style="margin: 5px 0;"><i class="fas fa-map-marker-alt"></i> {{ profile.location }}</p>
+        </div>
+
+        <div>
+            <h3 style="color: #deff9a; margin-bottom: 15px;">Quick Links</h3>
+            <a href="{{ profile.linkedin }}" style="color: white; text-decoration: none; display: block; margin-bottom: 5px;" target="_blank">LinkedIn</a>
+            <a href="{{ profile.github }}" style="color: white; text-decoration: none; display: block; margin-bottom: 5px;" target="_blank">GitHub</a>
+        </div>
+        <div>
+            <h3 style="color: #deff9a; margin-bottom: 15px;">About</h3>
+            <p style="font-size: 0.9rem; opacity: 0.8; line-height: 1.6;">
+                {{ profile.about_me }}
+            </p>
+        </div>
+
+        
+    </div>
+    
+    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px 0;">
+    <p style="font-size: 0.8rem; opacity: 0.6;">&copy; 2026 Neson. Created with ❤️ in Django.</p>
+</footer>
+</body>
+</html>
