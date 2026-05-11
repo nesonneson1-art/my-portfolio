@@ -216,8 +216,8 @@
         {% for project in projects %}
         <div class="project-card">
             {% if project.image %}
-                <img src="{{ profile.profile_pic.url }}" alt="{{ project.title }}">
-            {% endif %}
+                  <img src="{{ project.image.url }}" alt="{{ project.title }}">
+             {% endif %}
             <div class="project-content">
                 <span class="tech-stack">{{ project.technology }}</span>
                 <h2>{{ project.title }}</h2>
