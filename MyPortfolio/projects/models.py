@@ -1,4 +1,5 @@
 from django.db import models
+from image_cropping import ImageRatioField
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
@@ -44,3 +45,9 @@ class Profile(models.Model):
     resume = models.FileField(upload_to='resumes/', blank=True, null=True) # இந்த வரியைச் சேர்க்கவும்
     def __str__(self):
         return self.name
+
+class Profile(models.Model):
+    name = models.CharField(max_length=100)
+    profile_pic = models.ImageField(upload_to='profile_pics/')
+    # இதுதான் மவுஸ் வச்சு அட்ஜஸ்ட் பண்ண உதவும் பாக்ஸ்
+    cropping = ImageRatioField('profile_pic', '300x300')

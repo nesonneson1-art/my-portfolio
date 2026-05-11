@@ -63,12 +63,49 @@
 # admin.site.register(Profile, ProfileAdmin)
 # admin.site.register(Project, ProjectAdmin)
 # admin.site.register(Contact)
+# from django.contrib import admin
+# from django.utils.html import format_html
+# from .models import Project, Profile, Contact
+# from image_cropping import ImageCroppingMixin
+
+# class ProfileAdmin(admin.ModelAdmin):
+#     # இங்க தான் 'profile_pic' அப்படின்னு மாத்தி இருக்கேன்
+#     def photo_preview(self, obj):
+#         if obj.profile_pic:
+#             return format_html('<img src="{}" style="width:150px; height:150px; object-fit:cover; border-radius:10px;" />', obj.profile_pic.url)
+#         return "No Photo"
+
+#     readonly_fields = ['photo_preview']
+#     list_display = ['name', 'photo_preview']
+#     # 'image' என்ற இடத்தை 'profile_pic' என்று மாத்திட்டேன்
+#     fields = ['name', 'profile_pic', 'photo_preview', 'email', 'phone', 'location', 'about_me', 'portfolio_title', 'sub_title', 'linkedin', 'github', 'resume']
+
+# class ProjectAdmin(admin.ModelAdmin):
+#     def project_photo(self, obj):
+#         if obj.image:
+#             return format_html('<img src="{}" style="width:200px; height:auto; border-radius:5px;" />', obj.image.url)
+#         return "No Image"
+
+
+# class ProfileAdmin(ImageCroppingMixin, admin.ModelAdmin):
+#     pass
+
+#     readonly_fields = ['project_photo']
+#     list_display = ['title', 'project_photo']
+#     # இங்க 'github_link' என்று மாடல்ல இருக்கிற மாதிரியே கொடுத்திருக்கேன்
+#     fields = ['title', 'description', 'technology', 'image', 'project_photo', 'github_link']
+
+# # பழைய ரிஜிஸ்டர் வரிகள் இருந்தா நீக்கிட்டு இதை மட்டும் வைங்க
+# admin.site.register(Profile, ProfileAdmin)
+# admin.site.register(Project, ProjectAdmin)
+# admin.site.register(Contact)
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import Project, Profile, Contact
+from image_cropping import ImageCroppingMixin # மவுஸ் அட்ஜஸ்ட்மென்ட்க்கு இது முக்கியம்
 
-class ProfileAdmin(admin.ModelAdmin):
-    # இங்க தான் 'profile_pic' அப்படின்னு மாத்தி இருக்கேன்
+# 1. ப்ரொபைல் அட்ஜஸ்ட்மென்ட் (மவுஸ் மூலம் Crop செய்ய)
+class ProfileAdmin(ImageCroppingMixin, admin.ModelAdmin):
     def photo_preview(self, obj):
         if obj.profile_pic:
             return format_html('<img src="{}" style="width:150px; height:150px; object-fit:cover; border-radius:10px;" />', obj.profile_pic.url)
@@ -76,9 +113,10 @@ class ProfileAdmin(admin.ModelAdmin):
 
     readonly_fields = ['photo_preview']
     list_display = ['name', 'photo_preview']
-    # 'image' என்ற இடத்தை 'profile_pic' என்று மாத்திட்டேன்
-    fields = ['name', 'profile_pic', 'photo_preview', 'email', 'phone', 'location', 'about_me', 'portfolio_title', 'sub_title', 'linkedin', 'github', 'resume']
+    # 'cropping' ஃபீல்டு தான் அந்த மவுஸ் பாக்ஸைக் கொண்டு வரும்
+    fields = ['name', 'profile_pic', 'cropping', 'photo_preview', 'email', 'phone', 'location', 'about_me', 'portfolio_title', 'sub_title', 'linkedin', 'github', 'resume']
 
+# 2. ப்ராஜெக்ட் அட்ஜஸ்ட்மென்ட்
 class ProjectAdmin(admin.ModelAdmin):
     def project_photo(self, obj):
         if obj.image:
@@ -87,10 +125,9 @@ class ProjectAdmin(admin.ModelAdmin):
 
     readonly_fields = ['project_photo']
     list_display = ['title', 'project_photo']
-    # இங்க 'github_link' என்று மாடல்ல இருக்கிற மாதிரியே கொடுத்திருக்கேன்
     fields = ['title', 'description', 'technology', 'image', 'project_photo', 'github_link']
 
-# பழைய ரிஜிஸ்டர் வரிகள் இருந்தா நீக்கிட்டு இதை மட்டும் வைங்க
+# மாடல்களை ரிஜிஸ்டர் செய்தல்
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Contact)
