@@ -194,8 +194,7 @@
 <header>
     <div class="header-content">
         {% if profile.profile_pic %}
-           <img src="{% cropped_thumbnail profile "cropping" %}" alt="{{ profile.name }}" class="profile-img">
-        {% endif %}
+            <img src="{% cropped_thumbnail profile "cropping" %}" class="profile-img" alt="{{ profile.name }}">      {% endif %}
         
         <h1>{{ profile.portfolio_title }}</h1>
         
