@@ -1,5 +1,5 @@
-# from django.shortcuts import render, redirect
-# from .models import Project, Profile, Contact # Contact மாடலையும் சேர்த்துக்கோங்க
+from django.shortcuts import render, redirect
+from .models import Project, Profile, Contact # Contact மாடலையும் சேர்த்துக்கோங்க
 
 # def project_index(request):
 #     # --- 1. மெசேஜைச் சேமிக்கும் பகுதி ---
