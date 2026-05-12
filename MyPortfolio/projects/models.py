@@ -52,13 +52,13 @@
 #     # இதுதான் மவுஸ் வச்சு அட்ஜஸ்ட் பண்ண உதவும் பாக்ஸ்
 #     cropping = ImageRatioField('profile_pic', '300x300')
 from django.db import models
-from image_cropping import ImageRatioField
+
 
 # ப்ரொபைல் மாடல்
 class Profile(models.Model):
     name = models.CharField(max_length=100)
     profile_pic = models.ImageField(upload_to='profile_pics/')
-    cropping = ImageRatioField('profile_pic', '300x300')
+   
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=20, blank=True)
     location = models.CharField(max_length=100, blank=True)

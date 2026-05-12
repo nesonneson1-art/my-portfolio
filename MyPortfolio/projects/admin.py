@@ -136,7 +136,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import Project, Profile, Contact
-from image_cropping import ImageCroppingMixin
+
 
 # # 1. Profile Admin Settings
 # class ProfileAdmin(ImageCroppingMixin, admin.ModelAdmin):
@@ -153,24 +153,27 @@ from image_cropping import ImageCroppingMixin
 #         'portfolio_title', 'sub_title', 'linkedin', 'github', 'resume'
 #     ]
 
-class ProfileAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    # இதான் அந்த முக்கியமான வரி! 
-    # 'cropping' ஃபீல்டை 'profile_pic' இமேஜோட லிங்க் பண்ணுது.
-    image_cropping_field = 'profile_pic' 
+from django.contrib import admin
+from django.utils.html import format_html
+# Project மற்றும் Contact மாடல்களையும் இங்கே Import செய்ய வேண்டும்
+from .models import Profile, Project, Contact 
 
+# 1. Profile Admin Settings
+class ProfileAdmin(admin.ModelAdmin):
     def photo_preview(self, obj):
         if obj.profile_pic:
             return format_html('<img src="{}" style="width:100px; height:100px; object-fit:cover; border-radius:10px;" />', obj.profile_pic.url)
         return "No Photo"
 
+    photo_preview.short_description = 'Preview'
     readonly_fields = ['photo_preview']
     list_display = ['name', 'photo_preview']
     fields = [
-        'name', 'profile_pic', 'cropping', 'photo_preview', 
+        'name', 'profile_pic', 'photo_preview', 
         'email', 'phone', 'location', 'about_me', 
         'portfolio_title', 'sub_title', 'linkedin', 'github', 'resume'
     ]
-    
+
 # 2. Project Admin Settings
 class ProjectAdmin(admin.ModelAdmin):
     def project_photo(self, obj):
@@ -182,7 +185,7 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ['title', 'project_photo']
     fields = ['title', 'description', 'technology', 'image', 'project_photo', 'github_link']
 
-# 3. Model Registration
+# 3. Model Registration (ஒவ்வொன்றும் ஒரு முறை மட்டுமே இருக்க வேண்டும்)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Contact)
