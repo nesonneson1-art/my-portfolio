@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1d89ru^ceqqhui3)#c)7+s*x@c^qp!4$4^t(%49w4#!kr&296&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['my-portfolio-wpr8.onrender.com', 'localhost', '127.0.0.1']
 
