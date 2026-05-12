@@ -21,4 +21,4 @@ def project_index(request):
         'projects': projects,
         'profile': profile,
     }
-    return render(request, 'project_index.html', context)
+    return render(request, 'project_index.html', {'profile': profile})
