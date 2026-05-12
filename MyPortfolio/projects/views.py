@@ -40,7 +40,7 @@ def project_index(request):
     # எல்லா தகவல்களையும் ஒரே Context-க்குள் போடுங்க
     context = {
         'projects': projects,
-'profile': profile if profile else {}, # டேட்டா இல்லைனா காலியா அனுப்பும்
+        'profile': profile if profile else {}, # டேட்டா இல்லைனா காலியா அனுப்பும்
     }
     
     # ஒரே ஒரு ரிட்டர்ன் மட்டுமே இருக்கணும்!
