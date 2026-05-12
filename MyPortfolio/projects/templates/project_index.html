@@ -77,7 +77,7 @@
     <p>Java Developer | Django Enthusiast</p>
     <a href="/media/resume.pdf" class="github-btn" style="background: #e74c3c;" download>Download My Resume</a>
 </header> -->
-{% load cropping %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -193,9 +193,14 @@
 
 <header>
     <div class="header-content">
-        {% if profile.profile_pic %}
-            <img src="{% cropped_thumbnail profile "cropping" %}" class="profile-img" alt="{{ profile.name }}">      {% endif %}
-        
+       {% load cropping %}
+
+            {% if profile.profile_pic %}
+                <img src="{% cropped_thumbnail profile "cropping" %}" alt="{{ profile.name }}" class="profile-img">
+            {% else %}
+                <p>No profile picture added.</p>
+            {% endif %}
+            
         <h1>{{ profile.portfolio_title }}</h1>
         
         <p>{{ profile.sub_title }}</p>
