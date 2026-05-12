@@ -41,8 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'projects',
-    'easy_thumbnails',
-    'image_cropping',
+
 ]
 
 MIDDLEWARE = [
@@ -153,10 +152,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # settings.py-ன் கடைசியில் போடுங்க
 IMAGE_CROPPING_JQUERY_URL = None
 
-from easy_thumbnails.conf import Settings as thumbnail_settings
-THUMBNAIL_PROCESSORS = (
-    'image_cropping.thumbnail_processors.crop_corners',
-) + thumbnail_settings.THUMBNAIL_PROCESSORS
+
 from PIL import Image
 # இமேஜ் லிமிட்டை அப்படியே மாத்திடுறோம் (உங்க எர்ரர்ல இருக்குற நம்பரை விட அதிகமா குடுக்குறோம்)
 Image.MAX_IMAGE_PIXELS = None
