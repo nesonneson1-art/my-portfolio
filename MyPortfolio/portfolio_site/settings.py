@@ -150,3 +150,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# settings.py-ன் கடைசியில் போடுங்க
+IMAGE_CROPPING_JQUERY_URL = None

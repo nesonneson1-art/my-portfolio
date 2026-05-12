@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path # re_path இங்கேயே சேர்த்துக்கலாம்
 from django.conf import settings
 from django.views.static import serve
-
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('neson/', admin.site.urls), # உங்க அட்மின் லிங்க் 'neson'னு மாத்தியிருக்கீங்க, சூப்பர்!
@@ -31,3 +31,9 @@ urlpatterns += [
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
+
+
+
+# urlpatterns-க்கு கீழே இதைப் போடுங்க
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
