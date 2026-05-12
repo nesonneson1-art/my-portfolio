@@ -157,3 +157,6 @@ from easy_thumbnails.conf import Settings as thumbnail_settings
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
+from PIL import Image
+# இமேஜ் லிமிட்டை அப்படியே மாத்திடுறோம் (உங்க எர்ரர்ல இருக்குற நம்பரை விட அதிகமா குடுக்குறோம்)
+Image.MAX_IMAGE_PIXELS = None
