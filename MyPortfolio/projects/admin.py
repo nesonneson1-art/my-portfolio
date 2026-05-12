@@ -138,8 +138,26 @@ from django.utils.html import format_html
 from .models import Project, Profile, Contact
 from image_cropping import ImageCroppingMixin
 
-# 1. Profile Admin Settings
+# # 1. Profile Admin Settings
+# class ProfileAdmin(ImageCroppingMixin, admin.ModelAdmin):
+#     def photo_preview(self, obj):
+#         if obj.profile_pic:
+#             return format_html('<img src="{}" style="width:100px; height:100px; object-fit:cover; border-radius:10px;" />', obj.profile_pic.url)
+#         return "No Photo"
+
+#     readonly_fields = ['photo_preview']
+#     list_display = ['name', 'photo_preview']
+#     fields = [
+#         'name', 'profile_pic', 'cropping', 'photo_preview', 
+#         'email', 'phone', 'location', 'about_me', 
+#         'portfolio_title', 'sub_title', 'linkedin', 'github', 'resume'
+#     ]
+
 class ProfileAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    # இதான் அந்த முக்கியமான வரி! 
+    # 'cropping' ஃபீல்டை 'profile_pic' இமேஜோட லிங்க் பண்ணுது.
+    image_cropping_field = 'profile_pic' 
+
     def photo_preview(self, obj):
         if obj.profile_pic:
             return format_html('<img src="{}" style="width:100px; height:100px; object-fit:cover; border-radius:10px;" />', obj.profile_pic.url)
@@ -152,7 +170,7 @@ class ProfileAdmin(ImageCroppingMixin, admin.ModelAdmin):
         'email', 'phone', 'location', 'about_me', 
         'portfolio_title', 'sub_title', 'linkedin', 'github', 'resume'
     ]
-
+    
 # 2. Project Admin Settings
 class ProjectAdmin(admin.ModelAdmin):
     def project_photo(self, obj):
