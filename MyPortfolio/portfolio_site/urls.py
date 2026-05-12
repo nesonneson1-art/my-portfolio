@@ -20,6 +20,7 @@ from django.urls import path, include, re_path # re_path இங்கேயே �
 from django.conf import settings
 from django.views.static import serve
 
+
 urlpatterns = [
     path('neson/', admin.site.urls), # உங்க அட்மின் லிங்க் 'neson'னு மாத்தியிருக்கீங்க, சூப்பர்!
     path('', include('projects.urls')),
