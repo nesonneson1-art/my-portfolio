@@ -19,6 +19,6 @@ def project_index(request):
     profile = Profile.objects.first() 
     context = {
         'projects': projects,
-        'profile': profile
+        'profile': profile,
     }
     return render(request, 'project_index.html', context)
